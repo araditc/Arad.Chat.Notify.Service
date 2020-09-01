@@ -1,5 +1,6 @@
 package com.araditc.chat.core.Service;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Build;
 
@@ -17,6 +18,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+@SuppressLint("MissingFirebaseInstanceTokenRefresh")
 public class NotificationService extends FirebaseMessagingService {
 
     @Override
@@ -29,26 +31,5 @@ public class NotificationService extends FirebaseMessagingService {
                 startService(new Intent(this, XmppService.class));
             }
         }
-    }
-
-    @Override
-    public void onNewToken(@NonNull String s) {
-        super.onNewToken(s);
-        RequestTokenSubmiter request = new RequestTokenSubmiter(
-                s, getPackageName(), Utility.getAndroidId(this), Utility.getBrand());
-
-        TokenSubmiterService tokenSubmiter = APIClient.getClient(APIClient.BASE_URL).create(TokenSubmiterService.class);
-        Call<ResponseTokenSubmiter> callApi = tokenSubmiter.submitToken(request);
-        callApi.enqueue(new Callback<ResponseTokenSubmiter>() {
-            @Override
-            public void onResponse(Call<ResponseTokenSubmiter> call, Response<ResponseTokenSubmiter> response) {
-
-            }
-
-            @Override
-            public void onFailure(Call<ResponseTokenSubmiter> call, Throwable t) {
-
-            }
-        });
     }
 }
