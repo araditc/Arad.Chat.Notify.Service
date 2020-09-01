@@ -6,17 +6,9 @@ import android.os.Build;
 
 import androidx.annotation.NonNull;
 
-import com.araditc.chat.core.Repository.Network.ApiService.TokenSubmiterService;
-import com.araditc.chat.core.Repository.Network.APIClient;
-import com.araditc.chat.core.Repository.Network.RequestBody.RequestTokenSubmiter;
-import com.araditc.chat.core.Repository.Network.Response.ResponseTokenSubmiter;
 import com.araditc.chat.core.Util.Utility;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 @SuppressLint("MissingFirebaseInstanceTokenRefresh")
 public class NotificationService extends FirebaseMessagingService {
